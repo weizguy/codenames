@@ -1,0 +1,5 @@
+THINGS TO POSSIBLY FIX OR ADD:
+
+
+- Team timer resets after card click, but spyMaster timer does not
+- Add instruction menu?

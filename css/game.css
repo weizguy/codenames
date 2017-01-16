@@ -1,0 +1,216 @@
+
+body {
+    background-color: slategray;
+    margin: auto;
+    text-align: center;
+}
+
+.container{
+    padding: 0;
+}
+
+.gameBoard{
+    height: auto;
+    margin: auto;
+    padding: 0;
+}
+
+.spacer{
+    height: 1vh;
+}
+
+
+.flipContainer {
+    perspective: 1000px;
+    width: 16.2%;
+    height: 14vh;
+    padding: 0;
+    margin: 1px;
+}
+
+.card,
+.front,
+.reveal {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.card {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.reveal {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front {
+    background-image: url("../images/front.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #D8C59E;
+    z-index: 2;
+    transform: rotateY(0deg);
+    display: flex;
+    align-items: center;
+}
+
+.front p {
+    margin: 0;
+}
+
+.reveal {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotateY(180deg);
+}
+
+.word,
+.front,
+.reveal {
+    backface-visibility: hidden;
+}
+
+.word {
+    /*position: absolute;*/
+    /*left: 10px;*/
+    /*bottom: 10px;*/
+    margin: auto;
+    display: table-caption;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#changeHint,
+#hintText {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+#time,
+#hint,
+#count {
+    text-align: center;
+    cursor: not-allowed;
+    border: 2px solid black;
+    margin: auto;
+    border-radius: 15px;
+    background-color: burlywood;
+    height: auto;
+}
+
+#gameNum,
+#turn {
+    border: 3px solid black;
+    border-radius: 15px;
+    width: 41%;
+    text-align: center;
+    color: white;
+}
+
+#gameNum {
+    color: black;
+    background-color: burlywood;
+    cursor: not-allowed;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+header {
+    margin: auto;
+    margin-top: 5px;
+}
+
+#blueScore,
+#redScore {
+    border: 3px solid black;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    cursor: not-allowed;
+}
+
+#redScore {
+    background-color: red;
+    width: 16%
+}
+
+#blueScore {
+    background-color: blue;
+    width: 15.75%
+}
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+#gameModal {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,1);
+}
+
+#newGameModal {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,.7);
+}
+
+.modal-content {
+    background-color: slategray;
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    top: 25%;
+    border-top: 3px solid red;
+    border-left: 3px solid red;
+    border-bottom: 3px solid blue;
+    border-right: 3px solid blue;
+    width: 250px;
+}
+
+#modal-title {
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+}
+
+#containGameID {
+}
+
+button,
+#gameID {
+    background-color: burlywood;
+    position: relative;
+    display: inline-block;
+    border: 3px solid black;
+    margin: 5px;
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 20px;
+    width: 80px;
+}
+
+button {
+    width: 50px;
+}
+
+
+
