@@ -5,6 +5,13 @@ body {
     text-align: center;
 }
 
+#changeTeam,
+#teamText {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
 .container{
     padding: 0;
 }
@@ -36,13 +43,18 @@ body {
 }
 
 #timer {
-    /*visibility: hidden;*/
+    text-align: center;
+    cursor: not-allowed;
+    width: 7vw;
+    margin-top: 5px;
+    padding: 1px;
 }
 
 .qty {
     width: 7vw;
 }
 
+#timer,
 .hint,
 .qty{
     font-size: 20px;
@@ -120,4 +132,5 @@ button,
 
 button {
     width: 90px;
+    border: 2px solid black;
 }

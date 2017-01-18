@@ -9,6 +9,19 @@ $(document).ready(function () {
     modal.style.display = "block";
 });
 
+function changeTeam() {
+    var x = $('#playerTurn').val();
+    stopTimer();
+}
+
+function switchTeam() {
+    var y = $('#changeTeam').val();
+    if(game == true) {
+        $('#hintText').val(y);
+        changeTeam()
+    }
+}
+
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -46,13 +59,14 @@ function submitWord() {
         $('#hintWord').val('');
         $('#hintQty').val('');
         stopTimer();
+        alert('Game is over, cannot submit a new word');
     }
     var submitWord = $('#hintWord').val();
     var submitQty = $('#hintQty').val();
     var cw = submitWord.toUpperCase();
     var checkWord = gameBoard.indexOf(cw);
     if(checkWord < 0) {
-        if (tick === 90 && gameOver === false) {
+        if (tick === 90 && gameOver === false && cw != '') {
             fbRef.ref('codenames/Game/' + gameNumber + '/Spymaster/HintWord').set(submitWord);
             fbRef.ref('codenames/Game/' + gameNumber + '/Spymaster/numGuess').set(submitQty);
             x = submitWord + ' submitted!';
@@ -61,7 +75,16 @@ function submitWord() {
             $('#hintQty').val('');
             $('#hintWord').attr("placeholder", hint);
             startTimer();
-        }
+        }else if(tick != 90) {
+            alert('Team is still guessing');
+            $('#hintWord').val('');
+            $('#hintQty').val('');
+        }else
+            alert('cannot submit a blank word!');
+    }else {
+        alert('Cannot submit an existing code word!');
+        $('#hintWord').val('');
+        $('#hintQty').val('');
     }
 }
 
@@ -72,7 +95,7 @@ function startTimer() {
     }, 1000);
 }
 function timer() {
-    $('#timer').attr('placeholder', tick--);
+    $('#timer').html(tick--);
     if (tick < 0) {
         stopTimer();
     }
@@ -80,12 +103,10 @@ function timer() {
 function stopTimer() {
     clearInterval(clock);
     clock = null;
-    $('#timer').attr('placeholder', 0);
+    $('#timer').html(0);
     tick = timerMax;
 }
 // end timer function
-
-
 
 var team;
 var clicked;
