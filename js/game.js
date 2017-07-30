@@ -4,14 +4,16 @@ var timerMax = 90;
 var tick = timerMax;
 var clock;
 
-function changeHint() {
+function changeHint() { 
     var x = $('#hintText').val();
     $('#hint').html(x);
-    stopTimer();
-    startTimer();
+    if(tick == timerMax){
+        stopTimer();
+        startTimer();
+    }
 }
 
-function switchHint() {
+function switchHint() { 
     var y = $('#changeHint').val();
     if(game == true) {
     $('#hintText').val(y);
@@ -24,17 +26,20 @@ function startTimer() {
     $('.btn').click(switchTurn);
     clock = setInterval(function() { timer() }, 1000);
 }
+//actual timer function
 function timer() {
     $('#time').html(tick--);
     if(tick < 0){
         if(playerTurn == 'red'){
             turn('blue');
+            stopTimer();
         }else if(playerTurn == 'blue'){
             turn('red');
-        }
-        stopTimer();
-    }
+            stopTimer();
+        }           
+    } 
 }
+// stop timer function
 function stopTimer() {
     clearInterval(clock);
     clock = null;
@@ -43,7 +48,7 @@ function stopTimer() {
     $('.btn').off('click');
     $(".flipContainer").off("click");
 }
-// end timer function
+// end timer functions
 
 $(document).ready(function () {
     hintWord();
@@ -69,7 +74,7 @@ var fbRef = firebase.database();
 
 var hint;
 function hintWord() {
-    fbRef.ref().on('value', function (getHint) {
+    fbRef.ref().on('value', function (getHint) {  
         hint = getHint.val();
         G = 'SPY' + gameNumber;
         a = hint.codenames.Game;
