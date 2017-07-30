@@ -3,3 +3,7 @@ THINGS TO POSSIBLY FIX OR ADD:
 
 - Team timer resets after card click, but spyMaster timer does not
 - Add instruction menu?
+
+NOTE: to test where function is calling from:
+
+console.log("Being called from " + arguments.callee.caller.toString());
