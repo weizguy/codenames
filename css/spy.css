@@ -44,7 +44,7 @@ body {
 
 #timer {
     text-align: center;
-    cursor: not-allowed;
+    cursor: pointer;
     width: 7vw;
     margin-top: 5px;
     padding: 1px;
