@@ -90,6 +90,7 @@ function submitWord() {
 
 //start timer function
 function startTimer() {
+    $('#timer').click(stopTimer);
     clock = setInterval(function () {
         timer()
     }, 1000);
@@ -104,6 +105,7 @@ function stopTimer() {
     clearInterval(clock);
     clock = null;
     $('#timer').html(0);
+    $('#timer').off('click');
     tick = timerMax;
 }
 // end timer function
